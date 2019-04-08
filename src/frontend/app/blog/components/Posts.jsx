@@ -7,22 +7,42 @@ import styles from './Posts.scss';
 
 class Posts extends Component {
   componentDidMount() {
-    const { fetchPosts } = this.props;
-    fetchPosts();
+    const {
+      fetchPosts,
+      fetchPost,
+      match: {
+        params: {
+          id = false
+        }
+      }
+    } = this.props;
+
+    if (id > 0) {
+      fetchPost(id);
+    } else {
+      fetchPosts();
+    }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const {
       match: {
         params: {
           id = false
         }
       },
-      fetchPost
+      post,
+      posts,
+      fetchPost,
+      fetchPosts
     } = this.props;
 
-    if (id > 0) {
+    const hasDifferentId = id > 0 && id !== prevProps.match.params.id;
+
+    if (hasDifferentId && post.id !== Number(id)) {
       fetchPost(id);
+    } else if (!id && posts.length === 0) {
+      fetchPosts();
     }
   }
 
@@ -59,7 +79,7 @@ class Posts extends Component {
       }
     } = this.props;
 
-    if (posts.length === 0) {
+    if (!id && posts.length === 0) {
       return null;
     }
 
