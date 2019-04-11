@@ -4,6 +4,7 @@ import {
   FETCH_POST_RESPONSE
 } from '../actions/actionTypes';
 
+// Initial state
 const initialState = {
   posts: [],
   post: {}
@@ -14,6 +15,7 @@ export default function blogReducer(state = initialState, action) {
     case FETCH_POSTS_RESPONSE: {
       const { payload: posts } = action;
 
+      // Returning a new state
       return Object.assign({}, state, {
         posts
       });
@@ -22,6 +24,7 @@ export default function blogReducer(state = initialState, action) {
     case FETCH_POST_RESPONSE: {
       const { payload: post } = action;
 
+      // Returning a new state
       return Object.assign({}, state, {
         post
       });

@@ -14,7 +14,9 @@ export default function html({ title }) {
     <!DOCTYPE html>
     <html>
       <head>
-        <meta charset="utf-8"> <title>${title}</title> ${link}
+        <meta charset="utf-8">
+        <title>Blog</title> 
+        ${link}
       </head>
 
       <body>

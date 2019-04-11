@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 // Containers
 import Blog from './app/blog/container';
 
+// Rendering routes
 const App = () => (
   <BrowserRouter>
     <Switch>

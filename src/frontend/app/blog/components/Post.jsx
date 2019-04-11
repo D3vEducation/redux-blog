@@ -1,10 +1,18 @@
+// Dependencies
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { func, object } from 'prop-types';
+import { number, string } from 'prop-types';
 
+// Styles
 import styles from './Post.scss';
 
 class Post extends Component {
+  static propTypes = {
+    id: number,
+    title: string,
+    body: string
+  };
+
   render() {
     const { id, title, body } = this.props;
 
@@ -13,6 +21,7 @@ class Post extends Component {
         <h2>
           <Link to={`/blog/${id}`}>{title}</Link>
         </h2>
+        
         <p>{body}</p>
       </div>
     );

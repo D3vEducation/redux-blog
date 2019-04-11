@@ -1,11 +1,22 @@
+// Dependencies
 import React, { Component } from 'react';
-import { func, object } from 'prop-types';
+import { array, func, object } from 'prop-types';
 
+// Components
 import Post from './Post';
 
+// Styles
 import styles from './Posts.scss';
 
 class Posts extends Component {
+  static propTypes = {
+    fetchPost: func,
+    fetchPosts: func,
+    match: object,
+    posts: array,
+    post: object
+  };
+
   componentDidMount() {
     const {
       fetchPosts,
@@ -17,6 +28,8 @@ class Posts extends Component {
       }
     } = this.props;
 
+    // If the url includes the id we fetch the single post
+    // Otherwise we fetch all the posts
     if (id > 0) {
       fetchPost(id);
     } else {
@@ -37,6 +50,8 @@ class Posts extends Component {
       fetchPosts
     } = this.props;
 
+    // When the component updates we validate if the current id is different
+    // From the previous one
     const hasDifferentId = id > 0 && id !== prevProps.match.params.id;
 
     if (hasDifferentId && post.id !== Number(id)) {

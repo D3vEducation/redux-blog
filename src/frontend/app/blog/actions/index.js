@@ -1,5 +1,7 @@
+// API
 import Api from '../api';
 
+// Action Types
 import {
   FETCH_POSTS_REQUEST,
   FETCH_POSTS_RESPONSE,
@@ -7,6 +9,7 @@ import {
   FETCH_POST_RESPONSE
 } from './actionTypes';
 
+// fetchPosts actions
 export const fetchPostsRequest = () => dispatch => {
   dispatch({
     type: FETCH_POSTS_REQUEST
@@ -27,6 +30,7 @@ export const fetchPosts = () => dispatch => {
     .then(response => dispatch(fetchPostsResponse(response.data)));
 };
 
+// fetchPost actions
 export const fetchPostRequest = () => dispatch => {
   dispatch({
     type: FETCH_POST_REQUEST
